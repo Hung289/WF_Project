@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04BC3AD2-2918-4E7B-BC42-BFE28656E57E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Movie</RootNamespace>
+    <AssemblyName>Movie</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFood.Designer.cs">
+      <DependentUpon>AddFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddGhe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGhe.Designer.cs">
+      <DependentUpon>AddGhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSeat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSeat.Designer.cs">
+      <DependentUpon>AddSeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSize.Designer.cs">
+      <DependentUpon>AddSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillFood.Designer.cs">
+      <DependentUpon>BillFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartFood.cs" />
+    <Compile Include="frmBillFoodViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBillFoodViewReport.Designer.cs">
+      <DependentUpon>frmBillFoodViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSlotShowViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSlotShowViewReport.Designer.cs">
+      <DependentUpon>frmSlotShowViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Reposts\RptSlotShow.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptSlotShow.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reposts\RptTicket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptTicket.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SlotShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SlotShow.Designer.cs">
+      <DependentUpon>SlotShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewReport.Designer.cs">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ghe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ghe.Designer.cs">
+      <DependentUpon>Ghe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GheNgoi.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager.Designer.cs">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BillFood.cs" />
+    <Compile Include="Models\BillFoodDetail.cs" />
+    <Compile Include="Models\MovieViewReport.cs" />
+    <Compile Include="Models\SlotShow.cs" />
+    <Compile Include="Models\ThongKeMovie.cs" />
+    <Compile Include="Movie.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reposts\BillFood.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillFood.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reposts\RptBillFoodDetail.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptBillFoodDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reposts\ThongKeMovie.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongKeMovie.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SellFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellFood.Designer.cs">
+      <DependentUpon>SellFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextboxValidate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TextboxValidate.Designer.cs">
+      <DependentUpon>TextboxValidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKeDoAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeDoAn.Designer.cs">
+      <DependentUpon>ThongKeDoAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKeDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeDoanhThu.Designer.cs">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKePhim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKePhim.Designer.cs">
+      <DependentUpon>ThongKePhim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKeVeBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeVeBan.Designer.cs">
+      <DependentUpon>ThongKeVeBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TicketSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicketSale.Designer.cs">
+      <DependentUpon>TicketSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TickteInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TickteInfo.Designer.cs">
+      <DependentUpon>TickteInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TKDoanhThu.cs" />
+    <EmbeddedResource Include="AddFood.resx">
+      <DependentUpon>AddFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddGhe.resx">
+      <DependentUpon>AddGhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSeat.resx">
+      <DependentUpon>AddSeat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSize.resx">
+      <DependentUpon>AddSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillFood.resx">
+      <DependentUpon>BillFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBillFoodViewReport.resx">
+      <DependentUpon>frmBillFoodViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSlotShowViewReport.resx">
+      <DependentUpon>frmSlotShowViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reposts\RptSlotShow.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptSlotShow.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reposts\RptTicket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptTicket.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SlotShow.resx">
+      <DependentUpon>SlotShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewReport.resx">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ghe.resx">
+      <DependentUpon>Ghe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager.resx">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Reposts\BillFood.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BillFood.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reposts\RptBillFoodDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptBillFoodDetail.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reposts\ThongKeMovie.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongKeMovie.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellFood.resx">
+      <DependentUpon>SellFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextboxValidate.resx">
+      <DependentUpon>TextboxValidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeDoAn.resx">
+      <DependentUpon>ThongKeDoAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeDoanhThu.resx">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKePhim.resx">
+      <DependentUpon>ThongKePhim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeVeBan.resx">
+      <DependentUpon>ThongKeVeBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicketSale.resx">
+      <DependentUpon>TicketSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TickteInfo.resx">
+      <DependentUpon>TickteInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Movie.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Movie.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Movie.dbml.layout">
+      <DependentUpon>Movie.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

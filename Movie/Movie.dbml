@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="movie" Class="MovieDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HUNGPRO\PROHUNG;Initial Catalog=movie;User ID=sa" SettingsObjectName="Movie.Properties.Settings" SettingsPropertyName="movieConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.account" Member="accounts">
+    <Type Name="account">
+      <Column Name="Name_user" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name_show" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="account_bill_food" Member="bill_foods" ThisKey="Name_user" OtherKey="Account_id" Type="bill_food" />
+      <Association Name="account_ticket_sale" Member="ticket_sales" ThisKey="Name_user" OtherKey="Account_id" Type="ticket_sale" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category_movie" Member="category_movies">
+    <Type Name="category_movie">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="category_movie_movie" Member="movies" ThisKey="Id" OtherKey="Category_movie_id" Type="movie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.format_movie" Member="format_movies">
+    <Type Name="format_movie">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="format_movie_slot_show" Member="slot_shows" ThisKey="Id" OtherKey="Format_movie_id" Type="slot_show" />
+    </Type>
+  </Table>
+  <Table Name="dbo.slot_show" Member="slot_shows">
+    <Type Name="slot_show">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Start_time" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="End_time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Day_show" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Movie_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cinema_room_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Format_movie_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="slot_show_ticket_sale" Member="ticket_sales" ThisKey="Id" OtherKey="Slot_show_id" Type="ticket_sale" />
+      <Association Name="format_movie_slot_show" Member="format_movie" ThisKey="Format_movie_id" OtherKey="Id" Type="format_movie" IsForeignKey="true" />
+      <Association Name="movie_slot_show" Member="movie" ThisKey="Movie_id" OtherKey="Id" Type="movie" IsForeignKey="true" />
+      <Association Name="cinema_room_slot_show" Member="cinema_room" ThisKey="Cinema_room_id" OtherKey="Id" Type="cinema_room" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bill_food_detail" Member="bill_food_details">
+    <Type Name="bill_food_detail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total_price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bill_food_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Food_detail_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="food_detail_bill_food_detail" Member="food_detail" ThisKey="Food_detail_id" OtherKey="Id" Type="food_detail" IsForeignKey="true" />
+      <Association Name="bill_food_bill_food_detail" Member="bill_food" ThisKey="Bill_food_id" OtherKey="Id" Type="bill_food" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cate_food" Member="cate_foods">
+    <Type Name="cate_food">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="cate_food_food" Member="foods" ThisKey="Id" OtherKey="Cate_food_id" Type="food" />
+    </Type>
+  </Table>
+  <Table Name="dbo.food" Member="foods">
+    <Type Name="food">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cate_food_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="food_food_detail" Member="food_details" ThisKey="Id" OtherKey="Foot_id" Type="food_detail" />
+      <Association Name="cate_food_food" Member="cate_food" ThisKey="Cate_food_id" OtherKey="Id" Type="cate_food" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.food_detail" Member="food_details">
+    <Type Name="food_detail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Foot_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Size_food_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="food_detail_bill_food_detail" Member="bill_food_details" ThisKey="Id" OtherKey="Food_detail_id" Type="bill_food_detail" />
+      <Association Name="food_food_detail" Member="food" ThisKey="Foot_id" OtherKey="Id" Type="food" IsForeignKey="true" />
+      <Association Name="size_food_food_detail" Member="size_food" ThisKey="Size_food_id" OtherKey="Id" Type="size_food" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.size_food" Member="size_foods">
+    <Type Name="size_food">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="size_food_food_detail" Member="food_details" ThisKey="Id" OtherKey="Size_food_id" Type="food_detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bill_food" Member="bill_foods">
+    <Type Name="bill_food">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date_sale" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Account_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="bill_food_bill_food_detail" Member="bill_food_details" ThisKey="Id" OtherKey="Bill_food_id" Type="bill_food_detail" />
+      <Association Name="account_bill_food" Member="account" ThisKey="Account_id" OtherKey="Name_user" Type="account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.movie" Member="movies">
+    <Type Name="movie">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Movie_length" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Movie_release_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Production_comapany" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Category_movie_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="movie_slot_show" Member="slot_shows" ThisKey="Id" OtherKey="Movie_id" Type="slot_show" />
+      <Association Name="category_movie_movie" Member="category_movie" ThisKey="Category_movie_id" OtherKey="Id" Type="category_movie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cinema_room" Member="cinema_rooms">
+    <Type Name="cinema_room">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity_row" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity_Column" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity_seat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVip" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColVip" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowDoubleSeat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="cinema_room_slot_show" Member="slot_shows" ThisKey="Id" OtherKey="Cinema_room_id" Type="slot_show" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category_seat" Member="category_seats">
+    <Type Name="category_seat">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Subcharge" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ticket_sale" Member="ticket_sales">
+    <Type Name="ticket_sale">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date_sale" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Total_price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Slot_show_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Account_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NameSeat" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="account_ticket_sale" Member="account" ThisKey="Account_id" OtherKey="Name_user" Type="account" IsForeignKey="true" />
+      <Association Name="slot_show_ticket_sale" Member="slot_show" ThisKey="Slot_show_id" OtherKey="Id" Type="slot_show" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.p_tkTicketByYear" Method="p_tkTicketByYear">
+    <Parameter Name="year" Type="System.Int32" DbType="Int" />
+    <ElementType Name="p_tkTicketByYearResult">
+      <Column Name="Month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ve" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="totalPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.p_tkFoodbyYear" Method="p_tkFoodbyYear">
+    <Parameter Name="year" Type="System.Int32" DbType="Int" />
+    <ElementType Name="p_tkFoodbyYearResult">
+      <Column Name="Month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total_price" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
